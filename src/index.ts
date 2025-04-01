@@ -197,7 +197,7 @@ server.tool(
             if (searchResults.matches && searchResults.matches.length > 0) {
                 resultText += `Found ${searchResults.count} collection(s) matching "${search}" in database "${database}":\n\n`;
                 
-                searchResults.matches.forEach((match) => {
+                searchResults.matches.forEach((match: { collection: string; similarity: number }) => {
                     resultText += `- ${match.collection} (similarity: ${match.similarity.toFixed(2)})\n`;
                 });
             } else {
