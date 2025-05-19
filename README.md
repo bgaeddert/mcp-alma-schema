@@ -11,6 +11,40 @@ This is a Model Context Protocol (MCP) server that provides tools for accessing 
 
 ## Installation
 
+### Using npx (Recommended)
+
+The easiest way to use this MCP server is through npx:
+
+```bash
+npx mcp-alma-schema
+```
+
+### Manual Installation
+
+If you prefer to install it globally:
+
+```bash
+npm install -g mcp-alma-schema
+```
+
+Then you can run it with:
+
+```bash
+mcp-alma-schema
+```
+
+### From GitHub
+
+You can also install directly from GitHub:
+
+```bash
+npx github:yourusername/mcp-alma-schema
+```
+
+### For Development
+
+If you want to contribute or modify the code:
+
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/mcp-alma-schema.git
@@ -18,6 +52,12 @@ cd mcp-alma-schema
 
 # Install dependencies
 npm install
+
+# Build the project
+npm run build
+
+# Run locally
+npm start
 ```
 
 ## Configuration
@@ -29,24 +69,23 @@ The server can be configured using environment variables:
 Example configuration:
 
 ```bash
+# Using environment variable
 export API_BASE_URL=http://your-api-server:3000
+npx mcp-alma-schema
+
+# Or inline
+API_BASE_URL=http://your-api-server:3000 npx mcp-alma-schema
 ```
 
 ## Usage as an MCP Tool
 
 ### Via CLI
 
-1. Build the project:
-   ```bash
-   npm run build
-   ```
+The simplest way to run the MCP server:
 
-2. Run the MCP server:
-   ```bash
-   npm start
-   ```
-
-3. Connect to the MCP server using an MCP-compatible client.
+```bash
+npx mcp-alma-schema
+```
 
 ### Via Model Integration
 
@@ -62,9 +101,9 @@ Example configuration:
 {
   "mcpServers": {
     "mcp-alma-schema": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "/path/to/mcp-alma-schema/dist/index.js"
+        "mcp-alma-schema"
       ],
       "env": {
         "API_BASE_URL": "http://your-api-server:3000"
@@ -74,7 +113,22 @@ Example configuration:
 }
 ```
 
-Replace `/path/to/mcp-alma-schema/dist/index.js` with the absolute path to the built index.js file.
+You can also use the GitHub version directly:
+
+```json
+{
+  "mcpServers": {
+    "mcp-alma-schema": {
+      "command": "npx",
+      "args": [
+        "github:yourusername/mcp-alma-schema"
+      ],
+      "env": {
+        "API_BASE_URL": "http://your-api-server:3000"
+      }
+    }
+  }
+}
 
 #### For OpenAI or other supported models
 
@@ -146,4 +200,17 @@ Tell me about the schema for the profiles collection.
 > Using tool: get-collection-schema with {"database": "users", "collection": "profiles"}
 > [Returns JSON schema for profiles collection]
 ```
-## Private RepositoryThis is a private repository. All rights reserved. Not licensed for distribution or use without explicit permission.
+
+## License
+
+MIT License
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request

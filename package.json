@@ -1,14 +1,22 @@
 {
   "name": "mcp-alma-schema",
-  "version": "1.0.0",
-  "description": "MCP Alma Schema",
-  "main": "server.js",
+  "version": "1.0.1",
+  "description": "MCP server for MongoDB schema inspection",
+  "main": "build/index.js",
+  "bin": {
+    "mcp-alma-schema": "build/index.js"
+  },
   "type": "module",
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
     "prepare": "npm run build",
     "watch": "tsc --watch",
+    "start": "node build/index.js",
+    "dev": "API_BASE_URL=http://localhost node build/index.js",
     "inspector": "CLIENT_PORT=8080 SERVER_PORT=9000 npx @modelcontextprotocol/inspector node build/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.6.1",
@@ -17,5 +25,20 @@
   "devDependencies": {
     "@types/node": "^22.13.10",
     "typescript": "^5.8.2"
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgaeddert/mcp-alma-schema.git"
+  },
+  "keywords": [
+    "mcp",
+    "mongodb",
+    "schema",
+    "model-context-protocol"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
 }
