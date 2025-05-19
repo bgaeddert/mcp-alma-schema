@@ -38,7 +38,7 @@ mcp-alma-schema
 You can also install directly from GitHub:
 
 ```bash
-npx github:yourusername/mcp-alma-schema
+npx bgaeddert/mcp-alma-schema
 ```
 
 ### For Development
@@ -70,11 +70,11 @@ Example configuration:
 
 ```bash
 # Using environment variable
-export API_BASE_URL=http://your-api-server:3000
+export API_BASE_URL=http://localhost:6970
 npx mcp-alma-schema
 
 # Or inline
-API_BASE_URL=http://your-api-server:3000 npx mcp-alma-schema
+API_BASE_URL=http://localhost:6970 npx mcp-alma-schema
 ```
 
 ## Usage as an MCP Tool
@@ -95,7 +95,7 @@ To integrate with Claude Desktop, add the server to your Claude Desktop configur
 - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
 
-Example configuration:
+## You can use the GitHub version directly:
 
 ```json
 {
@@ -103,49 +103,13 @@ Example configuration:
     "mcp-alma-schema": {
       "command": "npx",
       "args": [
-        "mcp-alma-schema"
+        "bgaeddert/mcp-alma-schema"
       ],
       "env": {
-        "API_BASE_URL": "http://your-api-server:3000"
+        "API_BASE_URL": "http://localhost:6970"
       }
     }
   }
-}
-```
-
-You can also use the GitHub version directly:
-
-```json
-{
-  "mcpServers": {
-    "mcp-alma-schema": {
-      "command": "npx",
-      "args": [
-        "github:yourusername/mcp-alma-schema"
-      ],
-      "env": {
-        "API_BASE_URL": "http://your-api-server:3000"
-      }
-    }
-  }
-}
-
-#### For OpenAI or other supported models
-
-To integrate with OpenAI or other supported models, add this to your MCP configuration:
-
-```json
-{
-  "tools": [
-    {
-      "type": "function",
-      "function": {
-        "name": "alma-schema",
-        "description": "Access MongoDB schema information",
-        "parameters": {}
-      }
-    }
-  ]
 }
 ```
 
